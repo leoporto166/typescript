@@ -74,3 +74,57 @@ const protected1 = new Protected(33, "Leo", "leo@gmail.com")
 console.log(protected1)
 
 console.log(protected1.acessarMudarNome())
+
+console.log("==================================")
+
+//PRIVATE
+
+class EncapsulamentesPrivate{
+    private limite: number = 450
+
+    private aumentarLimite(quantidade: number):void{
+        if(quantidade < 1000){
+            console.log(`Seu aumento foi aceito e passa a ser: ${quantidade}`)
+        } else{
+            console.log(`Seu aumente foi RECUSADO e contina: ${this.limite}`)
+        }
+    }
+
+    solicitarAumento(estaAutenticado: boolean, quantidade: number): void | boolean{
+        if(estaAutenticado === true){
+            this.aumentarLimite(quantidade)
+            this.limite = quantidade
+        }else {
+            return false
+        }
+
+    }
+
+
+
+}
+
+const fulano = new EncapsulamentesPrivate()
+
+fulano.solicitarAumento(true, 900)
+console.log(fulano)
+
+console.log("===================================")
+
+class EncapsulamentesReadonly{
+    readonly id: string = "33";
+    nome: string;
+    idade: number;
+
+    constructor(nome: string, idade: number){
+        this.nome = nome
+        this.idade = idade
+    }
+}
+
+const usuario1 = new EncapsulamentesReadonly("Leo", 17)
+console.log(usuario1)
+
+console.log(`O id do(a) ${usuario1.nome} é: ${usuario1.id}`)
+
+//usuario1.id("333") -> ERRADO
