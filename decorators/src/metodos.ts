@@ -1,19 +1,5 @@
+import {validarPessoa } from "./decoratorss/validacoes"
 
-
-function validarPessoa(idade: number){
-    return(target: any, key: string, descriptor: PropertyDescriptor) => {
-        const  metodoOriginal = descriptor.value
-
-        descriptor.value = function (){
-            if(idade < 18){
-            console.log("Cadastrando um menor de idade")
-            } else {
-            console.log("Cadastrando um maior de idade")
-            return metodoOriginal.apply(this)
-            }
-        }
-    }
-}
 
 class Cadastro{
     nome: string;

@@ -1,9 +1,4 @@
-
-function logInfo(mensagem: string){
-   return(target:any) => {
-    console.log(`${mensagem}, ${target}`)
-   }
-}
+import { logInfo } from "./decoratorss/validacoes"
 
 @logInfo("Sistema criado!")
 class Sistema{

@@ -1,24 +1,4 @@
-
-function validarNome(tamanho: number){
-
-    return (target: any, key: string) => {
-        let valor = target[key]
-
-        const getter = () => valor
-        const setter = (value: string) =>{
-            if(value === "" || value.length < tamanho){
-                console.log("Modifique o nome do jogo. aumente os caracteres ou escreva algo")
-            } else{
-                valor = value
-            }
-        }
-
-        Object.defineProperty(target, key, {
-            get: getter,
-            set: setter
-        })
-    }
-}
+import { validarNome } from "./decoratorss/validacoes"
 
 class Jogo{
     @validarNome(5)
