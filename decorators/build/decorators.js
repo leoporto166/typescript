@@ -15,3 +15,20 @@ let Sistema = class Sistema {
 Sistema = __decorate([
     logInfo("Sistema criado!")
 ], Sistema);
+function servidorIp(novoIp) {
+    return (target) => {
+        return class extends target {
+            constructor() {
+                super(...arguments);
+                this.ip = novoIp;
+            }
+        };
+    };
+}
+let Servidor = class Servidor {
+};
+Servidor = __decorate([
+    servidorIp("192.168.100.33")
+], Servidor);
+const servidor1 = new Servidor;
+console.log(servidor1);
